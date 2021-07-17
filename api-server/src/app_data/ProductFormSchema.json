@@ -1,0 +1,98 @@
+{
+  "title": "Select Product Items",
+  "description": "These samples are best viewed without live validation.",
+  "type": "object",
+  "required": ["quantity", "itemList"],
+  "properties": {
+    "itemList": {
+      "title": "Item Type List",
+      "type": "string",
+      "enum": [
+        "Food",
+        "Lentil",
+        "Rice",
+        "Milk",
+        "Vegetables",
+        "Utencils",
+        "Tea sets",
+        "Spoons",
+        "Plates",
+        "Toys",
+        "Electric toys",
+        "Board games",
+        "Card games"
+      ]
+    },
+    "quantity": {
+      "type": "number",
+      "minimum": 1
+    }
+  },
+  "dependencies": {
+    "itemList": {
+      "oneOf": [
+        {
+          "properties": {
+            "itemList": {
+              "enum": ["Lentil"]
+            },
+            "Lentil": {
+              "enum": ["Masoor Dal", "Toor/Arhal Dal", "Lobia", "Chickpea"]
+            }
+          },
+          "required": ["Lentil"]
+        },
+        {
+          "properties": {
+            "itemList": {
+              "enum": ["Rice"]
+            },
+            "Rice": {
+              "enum": ["Basmati Rice", "Brown Rice", "Jasmine Rice"]
+            }
+          },
+          "required": ["Rice"]
+        },
+        {
+          "properties": {
+            "itemList": {
+              "enum": ["Milk"]
+            },
+            "Milk": {
+              "enum": ["Silm Milk", "Cow Milk"]
+            }
+          },
+          "required": ["Milk"]
+        },
+        {
+          "properties": {
+            "itemList": {
+              "enum": ["Vegetables"]
+            },
+            "Vegetables": {
+              "enum": ["Tomato", "Potato", "Peas"]
+            }
+          },
+          "required": ["Vegetables"]
+        },
+        {
+          "properties": {
+            "itemList": {
+              "enum": [
+                "Utencils",
+                "Tea sets",
+                "Spoons",
+                "Plates",
+                "Toys",
+                "Electric toys",
+                "Board games",
+                "Card games"
+              ]
+            }
+          },
+          "required": ["itemList"]
+        }
+      ]
+    }
+  }
+}
